@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "phpbb-auth"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Use phpbb for authentication in your rails app}
+    gem.description = %Q{Use phpbb for authentication in your rails app}
     gem.email = "mail@matthewfawcett.co.uk"
     gem.homepage = "http://github.com/mattfawcett/phpbb-auth"
     gem.authors = ["Matt Fawcett"]

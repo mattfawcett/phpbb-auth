@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Matt Fawcett"]
   s.date = %q{2009-08-31}
-  s.description = %q{TODO: longer description of your gem}
+  s.description = %q{Use phpbb for authentication in your rails app}
   s.email = %q{mail@matthewfawcett.co.uk}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -47,7 +47,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
-  s.summary = %q{TODO: one-line summary of your gem}
+  s.summary = %q{Use phpbb for authentication in your rails app}
   s.test_files = [
     "spec/config/phpbb_auth_settings.rb",
      "spec/models/phpbb_user_spec.rb",
