@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{phpbb-auth}
-  s.version = "0.0.0"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Matt Fawcett"]
@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
      "lib/phpbb_auth/models/phpbb_session.rb",
      "lib/phpbb_auth/models/phpbb_user.rb",
      "lib/phpbb_auth/phpbb_auth.rb",
+     "phpbb-auth.gemspec",
      "spec/config/phpbb_auth_settings.rb",
      "spec/db/forum.db",
      "spec/db/test.db",
