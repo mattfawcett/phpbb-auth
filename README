@@ -1,0 +1,51 @@
+phpbb-auth
+==========
+
+A Rails plugin / gem that allows you to use an existing PHPBB installation for handling users / authentication.
+
+How it works
+==========
+You have a config file which tells the plugin what the session will be called and also add a row to database.yml to tell the plugin how to connect to your PHPBB database. You can then call the current_user method from a controller and it looks in your phpbb database sessions table to find a match for your cookie. If there is a match and the user is logged in then it will look to see if you have a user in your apps database that matches the PHPBB session user. If not it will create one. You will be returned the object of the user you hold locally. You can configure what the model name is for your locally stored user. You can also configure what the fields that get copied from the phpbb users row. 
+
+
+Constraints
+===========
+This does not work with versions of rails < 2.3.3 as it relied on https://rails.lighthouseapp.com/projects/8994/tickets/765-primary_key-option-for-belongs_to
+
+Your rails app must have access to the phpbb sesion. Best way to do this is have both site son subdomains of the same domain. Configure phpbb so that it doesn't set the cookie for that particular subdomain only. (eg ".realalehunter.co.uk" instead of "forum.realalehunter.co.uk")
+
+
+Example
+=======
+# Login to the phpbb admin and follow the "cookie seetting" link, take a note of the Cookie name. Ensure that the cookie domain and path are setup in a way that allows your rails app to access. Eg if your rails app is on www.realalehunter.co.uk and your forum on forum.realalehunter.co.uk, ensure that the cookie domain is .realalehunter.co.uk rather than forum.realalehunter.co.uk
+
+# Now install the gem
+gem install mattfawcett-phpbb-auth
+
+# Tell environment.rb that you want to use the gem
+config.gem "mattfawcett-phpbb-auth", :source => "http://gems.github.com"
+
+# Add an entries to database.yml for phpbb_database_development, phpbb_database_production and phpbb_database_development
+
+# in your config directory create a file called phpbb_auth_settings.rb, copy whats below into the file and change to match your setup
+PHPBB_AUTH_FORUM_DATABASE_TABLE_PREFIX = 'phpbb_'
+PHPBB_AUTH_COOKIE_NAME = "phpbb3_7uah4"
+PHPBB_AUTH_LOCAL_USER_MODEL_NAME = "User" #this is the name of the model that you will use to store information about users in your rails app
+PHPBB_AUTH_REMOTE_REMOTE_IDENTIFIER = 'user_email' #I use email to identify somebody, you may want to use the username instead
+PHPBB_AUTH_REMOTE_LOCAL_IDENTIFIER = 'email' #this is the name of a field on your local user model that will be used to lookup the value of remote identifier.
+PHPBB_AUTH_COLUMNS_TO_DUPLICATE = {:user_website => :website} #specify any additional fields that you would like copying to your local user model 
+
+# in application controller, include the module
+include PhpbbAuth
+
+# create a method called set_current_user
+def set_current_user
+  @current_user = current_user
+end
+
+# add a before filter to the controller to run the method
+before_filter :set_current_user
+
+#you will then have access to the @current_user variable in your controllers and views. This will be either nil if the user is not logged in, or an instance of your local User 
+
+Copyright (c) 2009 Matt Fawcett, released under the MIT license
