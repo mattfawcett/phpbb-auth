@@ -23,7 +23,7 @@ Example
 gem install mattfawcett-phpbb-auth
 
 # Tell environment.rb that you want to use the gem
-config.gem "mattfawcett-phpbb-auth", :source => "http://gems.github.com"
+config.gem "mattfawcett-phpbb-auth", :lib => "phpbb_auth", :source => "http://gems.github.com"
 
 # Add an entries to database.yml for phpbb_database_development, phpbb_database_production and phpbb_database_development
 
