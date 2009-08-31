@@ -2,6 +2,7 @@ phpbb-auth
 ==========
 
 A Rails plugin / gem that allows you to use an existing PHPBB installation for handling users / authentication.
+More info is available on the blog post - http://matthewfawcett.co.uk/2009/08/31/use-a-phpbb-forum-to-handle-users-authentication-in-your-rails-app
 
 How it works
 ==========
